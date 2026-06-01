@@ -1,0 +1,24 @@
+bug-bounty-agent/
+├── main.py                        # entry point: python main.py --platform h1 --program yahoo
+├── requirements.txt               # all Python deps
+├── .env.example                   # fill this with your API keys
+├── config/   settings.py          # pydantic settings from .env
+│             scope.py             # scope enforcer — no request leaves without passing this
+├── orchestrator/ agent.py         # full pipeline loop
+│                 state.py         # AgentState dataclass
+├── platforms/    hackerone.py     # H1 REST API (scope fetch + report submit)
+│                 bugcrowd.py      # Bugcrowd API
+│                 intigriti.py     # Intigriti API
+├── recon/        subdomains.py    # Subfinder + Amass (parallel)
+│                 ports.py         # Naabu port scanner
+│                 urls.py          # Katana + GAU URL discovery
+│                 fingerprint.py   # tech fingerprinting via headers/response
+├── scanner/      nuclei.py        # Nuclei with medium/high/critical templates
+│             custom/ xss.py       # reflected XSS parameter testing
+│                     sqli.py      # error-based SQL injection detection
+│                     ssrf.py      # SSRF via URL parameter testing
+├── ai/           triage.py        # Claude — attack surface prioritization
+│                 analyzer.py      # Claude — FP removal, CVSS, vuln chaining
+│                 reporter.py      # Claude — writes full bounty report Markdown
+├── validator/    poc.py           # confirms findings real + Playwright screenshots
+└── database/     models.py        # SQLAlchemy: Program, Finding, Report tables
