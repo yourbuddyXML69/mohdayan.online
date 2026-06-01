@@ -1,0 +1,9 @@
+bug_bounty_agent/
+├── orchestrator/       # agent loop, state machine, task scheduler
+├── platforms/          # H1 / Bugcrowd / Intigriti API clients
+├── recon/              # subprocess wrappers for subfinder, naabu, katana, httpx
+├── scanner/            # nuclei runner + custom XSS/SQLi/SSRF/IDOR checks
+├── ai/                 # Claude API: triage, analysis, report writing
+├── validator/          # PoC confirmation + Playwright evidence capture
+├── database/           # SQLAlchemy models: programs, targets, findings, reports
+└── config/             # scope rules, rate limits, API keys, tool paths
